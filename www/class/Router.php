@@ -31,12 +31,16 @@ class Router{
         foreach($used_method as $template => $callback){
         
             if(preg_match_all("/$template/i",$uri,$matches)){
-                if(count($matches)>1){
-                $id=$matches[2][0];
-                $callback($id);
-                }
-                else 
-                    $callback();
+               
+               
+                    array_shift($matches);
+                    $args = array();
+                    
+                    foreach($matches as $match){
+                        $args[] = $match[0];
+                    }
+                    
+                    call_user_func_array($callback,$args);
                 break;
                 
                 }

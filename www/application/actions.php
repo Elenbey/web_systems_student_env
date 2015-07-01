@@ -11,3 +11,7 @@ function new_user(){
 function user_page($id){
     echo "Вы находитесь на странице пользователя $id";
 }
+
+function _user_page($id, $another){
+    echo "Вы находитесь на странице пользователя $id, $another";
+}
